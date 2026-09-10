@@ -1,52 +1,62 @@
-# Awesome-Risk-Based-Authentication
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Risk-Based Authentication Banner" width="100%">
+</p>
 
-## Top Risk-Based Authentication
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
-A curated list of leading **Risk-Based Authentication (RBA)**, **Adaptive Authentication**, **Risk-Based MFA**, **Continuous Authentication**, and **Identity Risk / Conditional Access** platforms — with a strong emphasis on **open-source alternatives and building blocks**.
+# 🛡️ Awesome Risk-Based Authentication
 
-> **Risk-Based Authentication (RBA)** evaluates contextual and behavioral signals such as device, IP reputation, geolocation, impossible travel, user behavior, authentication history, threat intelligence, application sensitivity, and session context to dynamically decide whether to **allow, challenge, step-up, re-authenticate, or block** an authentication request.
->
-> Commercial platforms such as Duo, Silverfort, Ping Identity, Okta, Microsoft Entra ID Protection and SecureAuth provide integrated risk engines and policy enforcement. Open-source projects generally provide the identity, MFA, policy, telemetry, and risk-engine building blocks from which a comparable RBA platform can be assembled.
+> 🔐 A definitive curated index, benchmark, and architectural guide to enterprise **Risk-Based Authentication (RBA)**, **Adaptive Multi-Factor Authentication (MFA)**, **Continuous Adaptive Trust (CAEP/SSE)**, and **Identity Threat Detection & Response (ITDR)** — featuring verified commercial SaaS pricing, free tier limits, market size analysis, and battle-tested open-source alternatives sorted by GitHub_Stars.
 
----
-
-## Table of Contents
-
-* [What Is Risk-Based Authentication?](#what-is-risk-based-authentication)
-* [Core RBA Capabilities](#core-rba-capabilities)
-* [SaaS / Hosted Platforms](#saas--hosted-platforms)
-* [Open-Source](#open-source)
-* [Open-Source RBA Platforms](#open-source-rba-platforms)
-* [Open-Source Identity and MFA](#open-source-identity-and-mfa)
-* [Risk Engines and Policy Engines](#risk-engines-and-policy-engines)
-* [Behavioral and Continuous Authentication](#behavioral-and-continuous-authentication)
-* [Device and Fingerprinting](#device-and-fingerprinting)
-* [Threat Intelligence and IP Reputation](#threat-intelligence-and-ip-reputation)
-* [Fraud and Anomaly Detection](#fraud-and-anomaly-detection)
-* [Policy and Access Control](#policy-and-access-control)
-* [Authentication Protocols](#authentication-protocols)
-* [Security Analytics and SIEM](#security-analytics-and-siem)
-* [Commercial → Open-Source Mapping](#commercial--open-source-mapping)
-* [RBA Architecture](#rba-architecture)
-* [Reference Architecture](#reference-architecture)
-* [Adaptive MFA Flow](#adaptive-mfa-flow)
-* [Risk Scoring](#risk-scoring)
-* [Continuous Authentication](#continuous-authentication-1)
-* [Zero Trust Architecture](#zero-trust-architecture)
-* [Open-Source RBA Stack](#open-source-rba-stack)
-* [Capability Matrix](#capability-matrix)
-* [Recommended Open-Source Stacks](#recommended-open-source-stacks)
-* [What Open Source Can Replace](#what-open-source-can-replace)
-* [What Open Source Cannot Replace Automatically](#what-open-source-cannot-replace-automatically)
-* [Security Considerations](#security-considerations)
-* [Licensing Considerations](#licensing-considerations)
-* [Project Selection Guide](#project-selection-guide)
-* [Top Open-Source Shortlist](#top-open-source-shortlist)
-* [Conclusion](#conclusion)
+### 🔍 Quick Discovery & Topics
+`risk-based-authentication` • `adaptive-mfa` • `step-up-authentication` • `continuous-authentication` • `zero-trust-identity` • `identity-threat-detection` • `itdr` • `behavioral-biometrics` • `device-fingerprinting` • `conditional-access` • `passkeys` • `fido2` • `keycloak` • `authentik` • `open-policy-agent`
 
 ---
 
-# What Is Risk-Based Authentication?
+## 📑 Table of Contents
+
+* [🧐 What Is Risk-Based Authentication?](#-what-is-risk-based-authentication)
+* [⚙️ Core RBA Capabilities](#️-core-rba-capabilities)
+* [🏢 SaaS / Hosted Platforms](#-saas--hosted-platforms)
+* [🔓 Open-Source](#-open-source)
+  * [⭐ Top Open-Source Projects Table (Sorted by Stars)](#-top-open-source-projects-table-sorted-by-stars)
+  * [📦 Open-Source RBA Platforms](#-open-source-rba-platforms)
+  * [🔑 Open-Source Identity and MFA](#-open-source-identity-and-mfa)
+  * [⚡ Risk Engines and Policy Engines](#-risk-engines-and-policy-engines)
+  * [🧠 Behavioral and Continuous Authentication](#-behavioral-and-continuous-authentication)
+  * [📱 Device and Fingerprinting](#-device-and-fingerprinting)
+  * [🌐 Threat Intelligence and IP Reputation](#-threat-intelligence-and-ip-reputation)
+  * [🚨 Fraud and Anomaly Detection](#-fraud-and-anomaly-detection)
+  * [📜 Policy and Access Control](#-policy-and-access-control)
+  * [🔐 Authentication Protocols](#-authentication-protocols)
+  * [📊 Security Analytics and SIEM](#-security-analytics-and-siem)
+* [🗺️ Commercial → Open-Source Mapping](#️-commercial--open-source-mapping)
+* [🏛️ RBA Architecture](#️-rba-architecture)
+* [📐 Reference Architecture](#-reference-architecture)
+* [🔄 Adaptive MFA Flow](#-adaptive-mfa-flow)
+* [🎲 Risk Scoring](#-risk-scoring)
+* [⚡ Continuous Authentication](#-continuous-authentication)
+* [🛡️ Zero Trust Architecture](#️-zero-trust-architecture)
+* [🧩 Open-Source RBA Stack](#-open-source-rba-stack)
+* [📊 Capability Matrix](#-capability-matrix)
+* [🛠️ Recommended Open-Source Stacks](#️-recommended-open-source-stacks)
+* [⚖️ What Open Source Can Replace](#️-what-open-source-can-replace)
+* [⚠️ What Open Source Cannot Replace Automatically](#️-what-open-source-cannot-replace-automatically)
+* [🔒 Security Considerations](#-security-considerations)
+* [📜 Licensing Considerations](#-licensing-considerations)
+* [🎯 Project Selection Guide](#-project-selection-guide)
+* [📋 Top Open-Source Shortlist](#-top-open-source-shortlist)
+* [📈 Star History](#-star-history)
+* [📄 Disclaimer](#-disclaimer)
+
+---
+
+
+# 🧐 What Is Risk-Based Authentication?
 
 Risk-Based Authentication is an adaptive authentication model in which the authentication requirement changes according to the estimated risk of an access request.
 
@@ -93,7 +103,7 @@ Microsoft Entra ID Protection, for example, calculates user and sign-in risk and
 
 ---
 
-# Core RBA Capabilities
+# ⚙️ Core RBA Capabilities
 
 | Capability                | Description                                              |
 | ------------------------- | -------------------------------------------------------- |
@@ -120,12 +130,12 @@ Microsoft Entra ID Protection, for example, calculates user and sign-in risk and
 
 ---
 
-# SaaS / Hosted Platforms
+# 🏢 SaaS / Hosted Platforms
 
 > This section intentionally remains separate from the Open-Source section.
 > Not every product below is strictly SaaS-only; the category includes commercial cloud, hosted, enterprise, and hybrid RBA / Identity Threat Protection platforms.
 >
-> 📊 **Market Insights**: The global Risk-Based Authentication (RBA) and Adaptive Authentication market is estimated at **$4.5B–$6.0B** (projected to reach **$18B+ by 2032** at a CAGR of ~20%). Enterprise adoption is driven by the surge in credential-based attacks, adversary-in-the-middle (AiTM) phishing, and Zero Trust mandates requiring dynamic, context-aware step-up verification.
+> 📊 **Market Size & Landscape Dynamics**: The global Risk-Based Authentication (RBA) and Adaptive Authentication market is estimated at **$4.5B–$6.0B** (projected to exceed **$18B+ by 2032** growing at a CAGR of ~20.5%). The sector is **moderately fragmented**: while cloud platform titans (Microsoft, Cisco, IBM) dominate core enterprise directory infrastructure and baseline MFA, specialized identity threat protection and CIAM innovators (Okta, Ping Identity, Silverfort, CrowdStrike, Cloudflare) capture substantial enterprise workload share across hybrid Active Directory, zero-trust network access, and legacy protocols, preventing a single winner-take-all monopoly.
 
 *The table below lists leading SaaS and commercial RBA platforms sorted in descending order by company valuation, market capitalization, or annual revenue.*
 
@@ -149,9 +159,68 @@ Microsoft Entra ID Protection, for example, calculates user and sign-in risk and
 
 ---
 
-# Open-Source
+# 🔓 Open-Source
 
 > **Important distinction:** There is no single universally adopted open-source drop-in replacement for Duo RBA, Silverfort, Okta Adaptive MFA or Microsoft Entra ID Protection.
+>
+> The open-source ecosystem is instead composed of:
+> 1. Identity providers
+> 2. MFA engines
+> 3. Authentication policy engines
+> 4. Risk engines
+> 5. Behavioral analytics
+> 6. Device intelligence
+> 7. Threat-intelligence systems
+> 8. SIEM/logging
+> 9. Policy-as-code engines
+> 10. Machine-learning infrastructure
+>
+> Combining these components can produce a highly capable self-hosted RBA platform.
+
+### ⭐ Open-Source Projects Table (Sorted by Stars)
+
+*Each repository includes a live GitHub star badge that links directly to its stargazers page.*
+
+| Repository 📦 | GitHub_Stars 🌟 | Focus Area 📂 | Description & Role 🚀 |
+| :--- | :--- | :--- | :--- |
+| **[Elasticsearch](https://github.com/elastic/elasticsearch)** | [![Stars](https://img.shields.io/github/stars/elastic/elasticsearch?style=social&color=white)](https://github.com/elastic/elasticsearch/stargazers) | Security Analytics & Telemetry | Distributed search and analytics engine for centralizing authentication logs, behavioral analysis, and anomaly detection. |
+| **[Headscale](https://github.com/juanfont/headscale)** | [![Stars](https://img.shields.io/github/stars/juanfont/headscale?style=social&color=white)](https://github.com/juanfont/headscale/stargazers) | Self-Hosted Zero Trust Mesh | Open-source control server for Tailscale WireGuard overlay networks enforcing identity-aware access rules. |
+| **[Keycloak](https://github.com/keycloak/keycloak)** | [![Stars](https://img.shields.io/github/stars/keycloak/keycloak?style=social&color=white)](https://github.com/keycloak/keycloak/stargazers) | Identity & Adaptive Auth Flows | Leading open-source identity and access management platform supporting conditional authentication flows, adaptive MFA, and WebAuthn. |
+| **[Authelia](https://github.com/authelia/authelia)** | [![Stars](https://img.shields.io/github/stars/authelia/authelia?style=social&color=white)](https://github.com/authelia/authelia/stargazers) | Authentication & Access Control | Lightweight authentication and authorization server providing 2FA/MFA, WebAuthn, TOTP, and reverse-proxy policy enforcement. |
+| **[FingerprintJS](https://github.com/fingerprintjs/fingerprintjs)** | [![Stars](https://img.shields.io/github/stars/fingerprintjs/fingerprintjs?style=social&color=white)](https://github.com/fingerprintjs/fingerprintjs/stargazers) | Browser & Device Fingerprinting | Client-side browser and device fingerprinting library providing hardware and environment signals for risk scoring. |
+| **[authentik](https://github.com/goauthentik/authentik)** | [![Stars](https://img.shields.io/github/stars/goauthentik/authentik?style=social&color=white)](https://github.com/goauthentik/authentik/stargazers) | Identity & Expression Policies | Open-source IdP with flexible Python expression policies, MFA enforcement, user flows, and modern directory integrations. |
+| **[Teleport](https://github.com/gravitational/teleport)** | [![Stars](https://img.shields.io/github/stars/gravitational/teleport?style=social&color=white)](https://github.com/gravitational/teleport/stargazers) | Zero Trust Access & Per-Session MFA | Identity-native infrastructure access proxy with device trust inspection, per-session MFA challenges, and continuous audit. |
+| **[Casbin](https://github.com/casbin/casbin)** | [![Stars](https://img.shields.io/github/stars/casbin/casbin?style=social&color=white)](https://github.com/casbin/casbin/stargazers) | Authorization Library | Powerful authorization library supporting access control models including ACL, RBAC, ABAC, and RESTful path-based policies. |
+| **[Wazuh](https://github.com/wazuh/wazuh)** | [![Stars](https://img.shields.io/github/stars/wazuh/wazuh?style=social&color=white)](https://github.com/wazuh/wazuh/stargazers) | SIEM & Threat Detection | Open-source security monitoring and XDR platform correlating endpoint events, authentication logs, and threat indicators. |
+| **[SuperTokens](https://github.com/supertokens/supertokens-core)** | [![Stars](https://img.shields.io/github/stars/supertokens/supertokens-core?style=social&color=white)](https://github.com/supertokens/supertokens-core/stargazers) | Auth & Session Risk Management | Modular open-source authentication solution featuring session theft protection, rolling session tokens, and adaptive MFA. |
+| **[ZITADEL](https://github.com/zitadel/zitadel)** | [![Stars](https://img.shields.io/github/stars/zitadel/zitadel?style=social&color=white)](https://github.com/zitadel/zitadel/stargazers) | Cloud-Native IAM & Passkeys | Cloud-native identity platform with turnkey multi-tenancy, passkey/WebAuthn support, and contextual session validation. |
+| **[CrowdSec](https://github.com/crowdsecurity/crowdsec)** | [![Stars](https://img.shields.io/github/stars/crowdsecurity/crowdsec?style=social&color=white)](https://github.com/crowdsecurity/crowdsec/stargazers) | Crowdsourced Threat Intel & IPS | Open-source collaborative intrusion prevention system and IP reputation network detecting brute-force and malicious login attempts. |
+| **[Logto](https://github.com/logto-io/logto)** | [![Stars](https://img.shields.io/github/stars/logto-io/logto?style=social&color=white)](https://github.com/logto-io/logto/stargazers) | Modern IAM & CIAM | Developer-friendly alternative to Auth0 supporting enterprise SSO, MFA, passwordless login, and webhook security triggers. |
+| **[Casdoor](https://github.com/casdoor/casdoor)** | [![Stars](https://img.shields.io/github/stars/casdoor/casdoor?style=social&color=white)](https://github.com/casdoor/casdoor/stargazers) | UI-First IAM & Federation | UI-centric identity management and SSO platform supporting OAuth2, OIDC, SAML, WebAuthn, and multi-factor step-up authentication. |
+| **[Ory Kratos](https://github.com/ory/kratos)** | [![Stars](https://img.shields.io/github/stars/ory/kratos?style=social&color=white)](https://github.com/ory/kratos/stargazers) | Headless IAM & MFA | Cloud-native identity and user management system supporting multi-factor authentication, passkeys, and risk-aware self-service flows. |
+| **[OpenSearch](https://github.com/opensearch-project/OpenSearch)** | [![Stars](https://img.shields.io/github/stars/opensearch-project/OpenSearch?style=social&color=white)](https://github.com/opensearch-project/OpenSearch/stargazers) | Search & Anomaly Detection | Open-source search and analytics suite offering automated anomaly detection on authentication telemetry and login events. |
+| **[Open Policy Agent (OPA)](https://github.com/open-policy-agent/opa)** | [![Stars](https://img.shields.io/github/stars/open-policy-agent/opa?style=social&color=white)](https://github.com/open-policy-agent/opa/stargazers) | Policy-as-Code Engine | General-purpose policy engine enabling context-aware risk evaluations, attribute-based access decisions, and decoupled auth rules. |
+| **[OpenCTI](https://github.com/OpenCTI-Platform/opencti)** | [![Stars](https://img.shields.io/github/stars/OpenCTI-Platform/opencti?style=social&color=white)](https://github.com/OpenCTI-Platform/opencti/stargazers) | Cyber Threat Intelligence | Open-source platform for structuring, correlating, and consuming threat intelligence feeds and malicious IP reputation. |
+| **[Falco](https://github.com/falcosecurity/falco)** | [![Stars](https://img.shields.io/github/stars/falcosecurity/falco?style=social&color=white)](https://github.com/falcosecurity/falco/stargazers) | Runtime Threat Detection | De facto Kubernetes threat detection engine analyzing system calls and behavioral anomalies in real time. |
+| **[MISP](https://github.com/MISP/MISP)** | [![Stars](https://img.shields.io/github/stars/MISP/MISP?style=social&color=white)](https://github.com/MISP/MISP/stargazers) | Threat Sharing & Indicators | Open-source threat sharing and indicator correlation platform tracking malicious IPs, compromised credentials, and botnets. |
+| **[OpenFGA](https://github.com/openfga/openfga)** | [![Stars](https://img.shields.io/github/stars/openfga/openfga?style=social&color=white)](https://github.com/openfga/openfga/stargazers) | Relationship-Based Authorization | Zanzibar-inspired open-source fine-grained authorization engine designed for complex resource permissions and context checks. |
+| **[Ory Keto](https://github.com/ory/keto)** | [![Stars](https://img.shields.io/github/stars/ory/keto?style=social&color=white)](https://github.com/ory/keto/stargazers) | Access Control & Zanzibar Server | High-performance access control server implementing Google Zanzibar relation-based access control (ReBAC). |
+| **[Kanidm](https://github.com/kanidm/kanidm)** | [![Stars](https://img.shields.io/github/stars/kanidm/kanidm?style=social&color=white)](https://github.com/kanidm/kanidm/stargazers) | Identity Directory & WebAuthn | Modern, fast identity directory and authentication server written in Rust with built-in passkey and WebAuthn support. |
+| **[HashiCorp Boundary](https://github.com/hashicorp/boundary)** | [![Stars](https://img.shields.io/github/stars/hashicorp/boundary?style=social&color=white)](https://github.com/hashicorp/boundary/stargazers) | Identity-Based Privileged Access | Identity-aware access management for secure infrastructure access without exposing underlying private networks. |
+| **[TheHive](https://github.com/TheHive-Project/TheHive)** | [![Stars](https://img.shields.io/github/stars/TheHive-Project/TheHive?style=social&color=white)](https://github.com/TheHive-Project/TheHive/stargazers) | Security Incident Response | Scalable security incident response platform integrated with MISP for investigating compromised user accounts. |
+| **[Shuffle](https://github.com/Shuffle/Shuffle)** | [![Stars](https://img.shields.io/github/stars/Shuffle/Shuffle?style=social&color=white)](https://github.com/Shuffle/Shuffle/stargazers) | Open-Source SOAR & Remediation | Open-source security orchestration and automated response platform for automated risk remediation and account lockouts. |
+| **[ClientJS](https://github.com/jackspirou/clientjs)** | [![Stars](https://img.shields.io/github/stars/jackspirou/clientjs?style=social&color=white)](https://github.com/jackspirou/clientjs/stargazers) | Browser Fingerprinting | Pure JavaScript device and browser fingerprinting library for collecting client-side environment attributes. |
+| **[privacyIDEA](https://github.com/privacyidea/privacyidea)** | [![Stars](https://img.shields.io/github/stars/privacyidea/privacyidea?style=social&color=white)](https://github.com/privacyidea/privacyidea/stargazers) | Enterprise Multi-Factor Auth | Modular authentication and token management system supporting WebAuthn, TOTP, push tokens, and adaptive MFA workflows. |
+| **[Cedar](https://github.com/cedar-policy/cedar)** | [![Stars](https://img.shields.io/github/stars/cedar-policy/cedar?style=social&color=white)](https://github.com/cedar-policy/cedar/stargazers) | Policy-as-Code Language | AWS-originated expressive policy language for fine-grained contextual authorization and dynamic access control. |
+| **[FreeIPA](https://github.com/freeipa/freeipa)** | [![Stars](https://img.shields.io/github/stars/freeipa/freeipa?style=social&color=white)](https://github.com/freeipa/freeipa/stargazers) | Identity & Domain Security | Integrated identity management system providing centralized LDAP, Kerberos, DNS, and host-level certificate policies. |
+| **[WSO2 Identity Server](https://github.com/wso2/product-is)** | [![Stars](https://img.shields.io/github/stars/wso2/product-is?style=social&color=white)](https://github.com/wso2/product-is/stargazers) | Enterprise RBA & Adaptive IAM | Enterprise IAM platform with native adaptive authentication scripts, behavioral risk scoring, and geo-velocity evaluation. |
+| **[ua-parser](https://github.com/ua-parser/uap-core)** | [![Stars](https://img.shields.io/github/stars/ua-parser/uap-core?style=social&color=white)](https://github.com/ua-parser/uap-core/stargazers) | User-Agent Parsing Engine | Regex-based cross-language user-agent parser for extracting OS, browser, and device telemetry from HTTP headers. |
+| **[Gluu / Janssen](https://github.com/JanssenProject/jans)** | [![Stars](https://img.shields.io/github/stars/JanssenProject/jans?style=social&color=white)](https://github.com/JanssenProject/jans/stargazers) | Cloud-Native IAM & FIDO2 | Cloud-native Linux Foundation identity platform with FIDO2/WebAuthn, UMA, and custom scriptable authentication steps. |
+| **[Apache Syncope](https://github.com/apache/syncope)** | [![Stars](https://img.shields.io/github/stars/apache/syncope?style=social&color=white)](https://github.com/apache/syncope/stargazers) | Enterprise Identity Lifecycle | Open-source digital identity management system for managing identity lifecycle, provisioning, and governance. |
+| **[OpenSearch Security Analytics](https://github.com/opensearch-project/security-analytics)** | [![Stars](https://img.shields.io/github/stars/opensearch-project/security-analytics?style=social&color=white)](https://github.com/opensearch-project/security-analytics/stargazers) | Security Correlation Engine | OpenSearch plugin providing Sigma rule-based threat detection and automated security event correlation. |
+| **[LemonLDAP::NG](https://github.com/LemonLDAPNG/lemonldap-ng)** | [![Stars](https://img.shields.io/github/stars/LemonLDAPNG/lemonldap-ng?style=social&color=white)](https://github.com/LemonLDAPNG/lemonldap-ng/stargazers) | Web SSO & Access Control | Modular Web-SSO and identity federation system with fine-grained access rules and session policy enforcement. |
+
+---
 >
 > The open-source ecosystem is instead composed of:
 >
@@ -170,7 +239,7 @@ Microsoft Entra ID Protection, for example, calculates user and sign-in risk and
 
 ---
 
-# Open-Source RBA Platforms
+# 📦 Open-Source RBA Platforms
 
 ## 1. WSO2 Identity Server
 
@@ -453,7 +522,7 @@ Useful as an enterprise identity foundation.
 
 ---
 
-# Risk Engines and Policy Engines
+# ⚡ Risk Engines and Policy Engines
 
 A major advantage of an open architecture is that the **risk engine can be separated from the identity provider**.
 
@@ -521,7 +590,7 @@ Open-source authorization server for fine-grained access control.
 
 ---
 
-# Behavioral and Continuous Authentication
+# 🧠 Behavioral and Continuous Authentication
 
 ## BehavioSec
 
@@ -545,7 +614,7 @@ Allow / Block
 
 ---
 
-## Continuous Authentication System
+## ⚡ Continuous Authentication System
 
 **GitHub:** https://github.com/ChiUkwuDi/Continuous-Authentication-System
 
@@ -561,7 +630,7 @@ Useful primarily as a research/building-block project rather than a mature enter
 
 ---
 
-# Device and Fingerprinting
+# 📱 Device and Fingerprinting
 
 Device intelligence is one of the most important RBA inputs.
 
@@ -607,7 +676,7 @@ Risk Engine
 
 ---
 
-# Threat Intelligence and IP Reputation
+# 🌐 Threat Intelligence and IP Reputation
 
 RBA becomes substantially stronger when authentication events are correlated with threat intelligence.
 
@@ -663,7 +732,7 @@ Useful for:
 
 ---
 
-# Fraud and Anomaly Detection
+# 🚨 Fraud and Anomaly Detection
 
 ## OpenSearch
 
@@ -728,7 +797,7 @@ Useful for:
 
 ---
 
-# Policy and Access Control
+# 📜 Policy and Access Control
 
 Important open-source components:
 
@@ -748,7 +817,7 @@ Important open-source components:
 
 ---
 
-# Authentication Protocols
+# 🔐 Authentication Protocols
 
 An RBA architecture should normally support:
 
@@ -780,7 +849,7 @@ Important open-source implementations include:
 
 ---
 
-# Security Analytics and SIEM
+# 📊 Security Analytics and SIEM
 
 ## Wazuh
 
@@ -826,7 +895,7 @@ Risk Engine
 
 ---
 
-# Commercial → Open-Source Mapping
+# 🗺️ Commercial → Open-Source Mapping
 
 | Commercial Platform           | Open-Source / Open Stack Equivalent                                 |
 | ----------------------------- | ------------------------------------------------------------------- |
@@ -849,7 +918,7 @@ Risk Engine
 
 ---
 
-# RBA Architecture
+# 🏛️ RBA Architecture
 
 ```mermaid
 flowchart TD
@@ -888,7 +957,7 @@ T --> U[Update Risk Profile]
 
 ---
 
-# Reference Architecture
+# 📐 Reference Architecture
 
 ```mermaid
 flowchart LR
@@ -924,7 +993,7 @@ MFA --> APP
 
 ---
 
-# Adaptive MFA Flow
+# 🔄 Adaptive MFA Flow
 
 ```mermaid
 sequenceDiagram
@@ -960,7 +1029,7 @@ R->>S: Record risk decision
 
 ---
 
-# Risk Scoring
+# 🎲 Risk Scoring
 
 A simple open-source RBA implementation can start with a weighted model.
 
@@ -1062,7 +1131,7 @@ BLOCK
 
 ---
 
-# Continuous Authentication
+# ⚡ Continuous Authentication
 
 Traditional authentication:
 
@@ -1112,7 +1181,7 @@ WebAuthn
 
 ---
 
-# Zero Trust Architecture
+# 🛡️ Zero Trust Architecture
 
 RBA fits naturally into Zero Trust.
 
@@ -1140,7 +1209,7 @@ J -->|Revoke| O[Session Revocation]
 
 ---
 
-# Open-Source RBA Stack
+# 🧩 Open-Source RBA Stack
 
 A strong fully self-hosted architecture can look like:
 
@@ -1188,7 +1257,7 @@ A strong fully self-hosted architecture can look like:
 
 ---
 
-# Capability Matrix
+# 📊 Capability Matrix
 
 | Capability                | Duo | Silverfort | Ping | Okta | Entra ID Protection | SecureAuth | WSO2 | Keycloak | privacyIDEA | authentik |
 | ------------------------- | --: | ---------: | ---: | ---: | ------------------: | ---------: | ---: | -------: | ----------: | --------: |
@@ -1215,7 +1284,7 @@ Legend:
 
 ---
 
-# Recommended Open-Source Stacks
+# 🛠️ Recommended Open-Source Stacks
 
 ## 1. Best Overall Enterprise RBA
 
@@ -1372,7 +1441,7 @@ MFA / Allow / Block
 
 ---
 
-# What Open Source Can Replace
+# ⚖️ What Open Source Can Replace
 
 With the correct architecture, open-source components can reproduce a substantial portion of commercial RBA functionality.
 
@@ -1407,7 +1476,7 @@ With the correct architecture, open-source components can reproduce a substantia
 
 ---
 
-# What Open Source Cannot Replace Automatically
+# ⚠️ What Open Source Cannot Replace Automatically
 
 The important limitation is that open-source components do **not automatically provide the enormous proprietary telemetry networks and detection models** behind some commercial platforms.
 
@@ -2071,7 +2140,7 @@ Continuous Session Evaluation
 
 ---
 
-# Top Open-Source Shortlist
+# 📋 Top Open-Source Shortlist
 
 ## Tier 1 — Most Important
 
@@ -2275,7 +2344,7 @@ M -->|90-100| R[Block / Revoke]
 
 ---
 
-# Security Considerations
+# 🔒 Security Considerations
 
 A production RBA system should protect against:
 
@@ -2356,7 +2425,7 @@ Avoid unnecessary behavioral surveillance
 
 ---
 
-# Licensing Considerations
+# 📜 Licensing Considerations
 
 Always verify the current license before deploying an open-source component commercially.
 
@@ -2568,7 +2637,7 @@ This architecture provides the strongest path toward an **open-source, self-host
 
 ---
 
-# Conclusion
+# 🎯 Conclusion
 
 Risk-Based Authentication is not simply another MFA product.
 
@@ -2654,7 +2723,13 @@ Please submit:
 
 ---
 
-# Disclaimer
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Risk-Based-Authentication&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Risk-Based-Authentication&type=date&legend=top-left)
+
+---
+
+# 📄 Disclaimer
 
 This README is intended as a technical reference and architectural comparison.
 
@@ -2664,7 +2739,7 @@ RBA thresholds and risk models shown in this document are illustrative and shoul
 
 ---
 
-## Recommended Starting Point
+## 🚀 Recommended Starting Point
 
 ```text
 For maximum open-source flexibility:
