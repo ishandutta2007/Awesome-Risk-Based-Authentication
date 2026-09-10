@@ -1,167 +1,2951 @@
 # Awesome-Risk-Based-Authentication
 
-# This has to be run from C:\Users\ishan\Documents\Projects folder
+## Top Risk-Based Authentication
+
+A curated list of leading **Risk-Based Authentication (RBA)**, **Adaptive Authentication**, **Risk-Based MFA**, **Continuous Authentication**, and **Identity Risk / Conditional Access** platforms — with a strong emphasis on **open-source alternatives and building blocks**.
+
+> **Risk-Based Authentication (RBA)** evaluates contextual and behavioral signals such as device, IP reputation, geolocation, impossible travel, user behavior, authentication history, threat intelligence, application sensitivity, and session context to dynamically decide whether to **allow, challenge, step-up, re-authenticate, or block** an authentication request.
+>
+> Commercial platforms such as Duo, Silverfort, Ping Identity, Okta, Microsoft Entra ID Protection and SecureAuth provide integrated risk engines and policy enforcement. Open-source projects generally provide the identity, MFA, policy, telemetry, and risk-engine building blocks from which a comparable RBA platform can be assembled.
+
+---
+
+## Table of Contents
+
+* [What Is Risk-Based Authentication?](#what-is-risk-based-authentication)
+* [Core RBA Capabilities](#core-rba-capabilities)
+* [SaaS / Hosted Platforms](#saas--hosted-platforms)
+* [Open-Source](#open-source)
+* [Open-Source RBA Platforms](#open-source-rba-platforms)
+* [Open-Source Identity and MFA](#open-source-identity-and-mfa)
+* [Risk Engines and Policy Engines](#risk-engines-and-policy-engines)
+* [Behavioral and Continuous Authentication](#behavioral-and-continuous-authentication)
+* [Device and Fingerprinting](#device-and-fingerprinting)
+* [Threat Intelligence and IP Reputation](#threat-intelligence-and-ip-reputation)
+* [Fraud and Anomaly Detection](#fraud-and-anomaly-detection)
+* [Policy and Access Control](#policy-and-access-control)
+* [Authentication Protocols](#authentication-protocols)
+* [Security Analytics and SIEM](#security-analytics-and-siem)
+* [Commercial → Open-Source Mapping](#commercial--open-source-mapping)
+* [RBA Architecture](#rba-architecture)
+* [Reference Architecture](#reference-architecture)
+* [Adaptive MFA Flow](#adaptive-mfa-flow)
+* [Risk Scoring](#risk-scoring)
+* [Continuous Authentication](#continuous-authentication-1)
+* [Zero Trust Architecture](#zero-trust-architecture)
+* [Open-Source RBA Stack](#open-source-rba-stack)
+* [Capability Matrix](#capability-matrix)
+* [Recommended Open-Source Stacks](#recommended-open-source-stacks)
+* [What Open Source Can Replace](#what-open-source-can-replace)
+* [What Open Source Cannot Replace Automatically](#what-open-source-cannot-replace-automatically)
+* [Security Considerations](#security-considerations)
+* [Licensing Considerations](#licensing-considerations)
+* [Project Selection Guide](#project-selection-guide)
+* [Top Open-Source Shortlist](#top-open-source-shortlist)
+* [Conclusion](#conclusion)
+
+---
+
+# What Is Risk-Based Authentication?
+
+Risk-Based Authentication is an adaptive authentication model in which the authentication requirement changes according to the estimated risk of an access request.
+
+Typical inputs include:
+
+* Username / identity
+* Device identity
+* Device posture
+* Browser characteristics
+* IP address
+* ASN
+* IP reputation
+* VPN / Tor / proxy detection
+* Geolocation
+* Geo-velocity
+* Time of day
+* Login frequency
+* Historical behavior
+* Authentication history
+* Failed-login patterns
+* Credential compromise
+* Threat intelligence
+* Application sensitivity
+* User role
+* Network trust
+* Session age
+* Transaction context
+* Behavioral biometrics
+* Anomaly detection
+* Previous MFA results
+
+The resulting risk can determine whether the system:
+
+```text
+ALLOW
+CHALLENGE
+STEP-UP MFA
+REAUTHENTICATE
+RESTRICT
+BLOCK
+```
+
+Microsoft Entra ID Protection, for example, calculates user and sign-in risk and can feed those signals into Conditional Access policies that require MFA, remediation, reauthentication, or blocking.
+
+---
+
+# Core RBA Capabilities
+
+| Capability                | Description                                              |
+| ------------------------- | -------------------------------------------------------- |
+| Risk scoring              | Calculate authentication risk                            |
+| Adaptive MFA              | Increase authentication requirements when risk rises     |
+| Step-up authentication    | Require additional factors only when necessary           |
+| Device intelligence       | Identify trusted/untrusted devices                       |
+| IP intelligence           | Detect malicious or suspicious IP addresses              |
+| Geolocation               | Analyze geographic context                               |
+| Impossible travel         | Detect unrealistic geographic movement                   |
+| Behavioral analytics      | Compare current behavior with historical behavior        |
+| Threat intelligence       | Incorporate external security intelligence               |
+| Credential intelligence   | Detect leaked or compromised credentials                 |
+| Session risk              | Continuously evaluate an authenticated session           |
+| Continuous authentication | Revalidate identity after initial login                  |
+| Policy engine             | Translate risk into access decisions                     |
+| Risk remediation          | Allow users to recover from risky authentication         |
+| Risk-based passwordless   | Combine strong authentication with risk                  |
+| Transaction risk          | Increase authentication for sensitive operations         |
+| Identity risk             | Evaluate the probability that an identity is compromised |
+| Workload risk             | Evaluate non-human/service identities                    |
+| SIEM integration          | Export risk events                                       |
+| API integration           | Allow applications to consume risk decisions             |
 
-$repo_name = 'Awesome-Risk-Based-Authentication'
+---
 
-$repo_desc = 'Top Risk Based Authentication (Opensource) 🌟 Star if you like it! 🌟'
+# SaaS / Hosted Platforms
 
+> This section intentionally remains separate from the Open-Source section.
+> Not every product below is strictly SaaS-only; the category includes commercial cloud, hosted, enterprise and hybrid RBA platforms.
 
+## 1. Cisco Duo
 
-$loops_path="C:\Users\ishan\Desktop\Coding_LOOPs"
+**Website:** https://duo.com/
 
-if (-not $env:GITHUB_TOKEN) { Write-Error "Error: set GITHUB_TOKEN in enviroment first"; Start-Sleep -Seconds 30; exit 1 }
+Duo Risk-Based Authentication evaluates authentication activity and can adapt factor selection according to detected risk. Duo describes Risk-Based Authentication as including **Risk-Based Factor Selection** and **Risk-Based Remembered Devices**.
 
-$GITHUB_TOKEN=$env:GITHUB_TOKEN
+**Strengths**
 
-if (-not $env:loops_path) { Write-Error "Error: set loops_path in enviroment first"; Start-Sleep -Seconds 30; exit 1 }
+* Risk-based MFA
+* Device trust
+* Adaptive factor selection
+* Trusted devices
+* Phishing-resistant MFA
+* VPN / remote-access integration
+* Zero Trust access
+* Strong enterprise ecosystem
 
-$loops_path=$env:loops_path
+---
 
-create-github-repo $repo_name -d $repo_desc --token $GITHUB_TOKEN
+## 2. Silverfort
 
-mkdir $repo_name
+**Website:** https://www.silverfort.com/
 
-cd $repo_name
+Identity protection and unified identity security platform focused on protecting identities across:
 
-echo "# $repo_name" >> README.md
+* Active Directory
+* Cloud identities
+* SaaS
+* Legacy applications
+* Service accounts
+* Non-human identities
+* Infrastructure
 
-echo "" >> README.md
+**Strengths**
 
-git init
+* Identity threat detection
+* Risk-based authentication
+* MFA enforcement
+* Lateral-movement protection
+* Identity threat detection and response
+* Legacy application protection
+* Agentless architecture
 
-git add README.md
+---
 
-git commit -m "first commit"
+## 3. Ping Identity
 
-git branch -M main
+**Website:** https://www.pingidentity.com/
 
-git remote add origin "https://github.com/ishandutta2007/$repo_name.git"
+Ping Identity provides adaptive and risk-based authentication using contextual information such as:
 
-git pull origin main --allow-unrelated-histories
+* Location
+* Device
+* IP
+* Time
+* User context
+* Authentication behavior
 
-git push -u origin main
+Risk-based authentication can increase authentication requirements when the risk of a request rises.
 
+**Strengths**
 
+* Adaptive MFA
+* SSO
+* Federation
+* Workforce IAM
+* CIAM
+* Risk policies
+* Device intelligence
+* API integration
 
-git add .
+---
 
-git commit -m "first code"
+## 4. ForgeRock
 
-git push
+**Website:** https://www.forgerock.com/
 
+ForgeRock's identity platform supports adaptive authentication and contextual authentication through journeys, policies and risk signals.
 
+**Strengths**
 
-# add-github-topic applied-ai --token $GITHUB_TOKEN
+* Adaptive authentication
+* Identity journeys
+* MFA
+* Passwordless authentication
+* Device intelligence
+* Behavioral signals
+* CIAM
+* Workforce IAM
+* Identity orchestration
 
-gh repo edit ishandutta2007/$repo_name --add-topic "curated-list,awesome-list"
+---
 
-git pull
+## 5. Okta Adaptive MFA
 
+**Website:** https://www.okta.com/
 
+Okta provides adaptive authentication capabilities through its identity and access platform.
 
-github-tabs Discussions --token $GITHUB_TOKEN
+**Typical signals**
 
-git pull
+* Network
+* Location
+* Device
+* User behavior
+* Application context
+* Authentication context
 
+**Strengths**
 
+* Adaptive MFA
+* SSO
+* Universal Directory
+* Device Trust
+* Threat intelligence
+* Workforce Identity
+* CIAM
+* Lifecycle management
 
-github-tabs Sponsorships --token $GITHUB_TOKEN
+---
 
-git pull
+## 6. Microsoft Entra ID Protection
 
+**Website:** https://www.microsoft.com/security/business/identity-access/microsoft-entra-id-protection
 
+Microsoft Entra ID Protection detects, investigates and remediates identity risks and integrates those risk signals with Conditional Access. Microsoft currently distinguishes **user risk** and **sign-in risk** for risk-based access decisions.
 
-github-protect --token $GITHUB_TOKEN
+**Strengths**
 
-git pull
+* User risk
+* Sign-in risk
+* Conditional Access
+* Risk-based MFA
+* Risk remediation
+* Compromised identity detection
+* Password spray detection
+* Token-related detections
+* Workload identity risk
+* Microsoft Security integration
+* SIEM/XDR integration
 
+> **Important:** Microsoft is moving legacy ID Protection risk policies into Conditional Access; Microsoft documentation states the legacy risk policies are scheduled for retirement on **October 1, 2026**.
 
+---
 
-git add README.md
+## 7. IBM Verify
 
-git commit -m "first code"
+**Website:** https://www.ibm.com/products/verify
 
-git pull
+**Capabilities**
 
-git push
+* Adaptive authentication
+* MFA
+* Risk-based access
+* Identity governance
+* SSO
+* Passwordless authentication
+* Risk analytics
+* Workforce IAM
+* CIAM
 
+---
 
+## 8. RSA Adaptive Authentication
 
-cp ..\Awesome-BERT\.gitignore .
+**Website:** https://www.rsa.com/
 
-git add .\.gitignore
+RSA's adaptive authentication technology historically focused on evaluating contextual and behavioral signals to dynamically determine authentication requirements.
 
-git commit -m .\.gitignore
+**Capabilities**
 
+* Risk scoring
+* Device intelligence
+* Behavioral analytics
+* Fraud detection
+* Adaptive MFA
+* Transaction monitoring
+* Authentication intelligence
 
+---
 
-cp ..\Awesome-BERT\LICENSE .
+## 9. SecureAuth
 
-git add .\LICENSE
+**Website:** https://www.secureauth.com/
 
-git commit -m .\LICENSE
+SecureAuth Connect implements an adaptive authentication model in which its Risk Engine evaluates signals including device characteristics, location/network information and behavioral patterns.
 
+**Strengths**
 
+* Adaptive authentication
+* Risk engine
+* Device fingerprinting
+* Geo-IP
+* Impossible travel
+* VPN/Tor/proxy detection
+* Behavioral analytics
+* MFA
+* Passwordless authentication
 
-git rm --cached *.bak
+---
 
-git status
+## 10. OneLogin
 
-git add .
+**Website:** https://www.onelogin.com/
 
-git commit -m cleanup
+**Capabilities**
 
+* Adaptive authentication
+* MFA
+* SmartFactor Authentication
+* Device trust
+* Contextual access
+* SSO
+* Identity lifecycle
+* Workforce IAM
 
+---
 
-git push
+## 11. Cisco Secure Access
 
-gh browse
+**Website:** https://www.cisco.com/
 
+Cloud-delivered Zero Trust access with identity, device and security context.
 
+---
 
-$real_repo_name=$repo_name.replace('Awesome-','')
+## 12. Cloudflare Zero Trust
 
-chatgpt-cli "$loops_path\sheet_outputs\$real_repo_name.txt" -o "../$repo_name/README.md" -w 600
+**Website:** https://www.cloudflare.com/zero-trust/
 
-# grok-cli "$loops_path\sheet_outputs\$real_repo_name.txt" -o "../$repo_name/README.md" -w 600
+**Capabilities**
 
-# -b chrome
+* Identity-aware access
+* Device posture
+* Network context
+* Risk signals
+* MFA
+* Access policies
+* Browser isolation
+* Gateway security
 
-(Get-Content -Path "../$repo_name/README.md") -replace "## Top ", "### Top " | Set-Content -Path "../$repo_name/README.md"
+---
 
-# subl .
+## 13. CrowdStrike Falcon Identity Protection
 
-git add .
+**Website:** https://www.crowdstrike.com/
 
-git commit -m minor_title
+**Capabilities**
 
-git push
+* Identity threat detection
+* Identity risk
+* Active Directory security
+* Credential theft detection
+* Behavioral analytics
+* Identity threat response
 
+---
 
+## 14. Microsoft Defender for Identity
 
-github-growth-plot --publish
+**Website:** https://www.microsoft.com/security/business/identity-access/microsoft-defender-for-identity
 
-git add .
+Primarily identity threat detection rather than a standalone RBA platform, but highly relevant as a risk-signal source.
 
-git commit -m growth_plot_added
+---
 
-git push
+## 15. Auth0 Adaptive MFA
 
+**Website:** https://auth0.com/
 
+**Capabilities**
 
-gh-browse-or-reload 
+* Adaptive MFA
+* Attack Protection
+* Bot detection
+* Breached password detection
+* Device/context signals
+* Risk-based authentication flows
 
+---
 
+# Open-Source
 
+> **Important distinction:** There is no single universally adopted open-source drop-in replacement for Duo RBA, Silverfort, Okta Adaptive MFA or Microsoft Entra ID Protection.
+>
+> The open-source ecosystem is instead composed of:
+>
+> 1. Identity providers
+> 2. MFA engines
+> 3. Authentication policy engines
+> 4. Risk engines
+> 5. Behavioral analytics
+> 6. Device intelligence
+> 7. Threat-intelligence systems
+> 8. SIEM/logging
+> 9. Policy-as-code engines
+> 10. Machine-learning infrastructure
+>
+> Combining these components can produce a highly capable self-hosted RBA platform.
 
+---
 
-git config --global --add safe.directory '*'
+# Open-Source RBA Platforms
 
-git fsck
+## 1. WSO2 Identity Server
 
-if (Test-Path .git/index.lock) { Remove-Item .git/index.lock -Recurse -Force }
+**GitHub:** https://github.com/wso2/product-is
 
+**Website:** https://wso2.com/identity-server/
 
+One of the strongest open-source candidates for building adaptive authentication.
 
-agy --dangerously-skip-permissions --sandbox
+WSO2 Identity Server supports adaptive authentication and can integrate risk engines and external systems. WSO2 documentation describes contextual signals including device fingerprints, history, geolocation, geo-velocity and behavioral analysis.
+
+**Capabilities**
+
+* Adaptive authentication
+* Conditional authentication
+* MFA
+* SSO
+* OAuth2
+* OpenID Connect
+* SAML
+* Identity federation
+* Authentication scripts
+* Risk-engine integration
+* Device context
+* Geolocation
+* Geo-velocity
+* Behavioral analysis
+
+**Best open-source candidate for:**
+
+```text
+Enterprise RBA
++
+Identity Server
++
+Adaptive MFA
+```
+
+---
+
+## 2. Keycloak
+
+**GitHub:** https://github.com/keycloak/keycloak
+
+**Website:** https://www.keycloak.org/
+
+Keycloak is one of the most important open-source IAM platforms for building an RBA system.
+
+It provides:
+
+* Authentication flows
+* Conditional authenticators
+* MFA
+* WebAuthn
+* TOTP
+* OTP
+* SSO
+* OAuth2
+* OpenID Connect
+* SAML
+* Identity brokering
+* User federation
+* Custom authenticators
+* Custom extensions
+
+Risk scoring can be implemented using custom authenticators, authentication flows, event listeners and external risk engines.
+
+---
+
+## 3. authentik
+
+**GitHub:** https://github.com/goauthentik/authentik
+
+**Website:** https://goauthentik.io/
+
+authentik is an open-source identity provider supporting SAML, OAuth2/OIDC, LDAP, RADIUS and policy-based authentication.
+
+**Useful for RBA**
+
+* Policy engine
+* Expression policies
+* MFA
+* Device/context policies
+* SSO
+* OAuth2/OIDC
+* LDAP
+* RADIUS
+* Self-hosting
+
+---
+
+## 4. privacyIDEA
+
+**GitHub:** https://github.com/privacyidea/privacyidea
+
+**Website:** https://privacyidea.org/
+
+Open-source authentication and MFA platform.
+
+**Capabilities**
+
+* OTP
+* TOTP
+* HOTP
+* WebAuthn
+* FIDO2
+* Push authentication integrations
+* Token management
+* Authentication policies
+* LDAP/AD integration
+* RADIUS
+* REST API
+
+Excellent building block for an open-source adaptive MFA architecture.
+
+---
+
+## 5. Gluu / Janssen
+
+**GitHub:** https://github.com/JanssenProject/jans
+
+**Website:** https://www.jans.io/
+
+Open-source identity and authorization platform.
+
+**Capabilities**
+
+* OAuth2
+* OpenID Connect
+* FIDO2
+* WebAuthn
+* UMA
+* Authentication
+* Authorization
+* Identity federation
+* Custom authentication flows
+
+---
+
+## 6. LemonLDAP::NG
+
+**GitHub:** https://github.com/LemonLDAPNG/lemonldap-ng
+
+**Website:** https://lemonldap-ng.org/
+
+Open-source Web SSO and access-management platform.
+
+**Capabilities**
+
+* SSO
+* Access control
+* Authentication
+* LDAP
+* SAML
+* OpenID Connect
+* CAS
+* Policy enforcement
+* Session management
+
+---
+
+## 7. Authelia
+
+**GitHub:** https://github.com/authelia/authelia
+
+Open-source authentication and authorization server.
+
+**Capabilities**
+
+* 2FA
+* WebAuthn
+* TOTP
+* OIDC
+* Access control
+* Session management
+* Reverse-proxy integration
+
+Best suited to smaller/self-hosted environments.
+
+---
+
+## 8. Kanidm
+
+**GitHub:** https://github.com/kanidm/kanidm
+
+Modern open-source identity directory and authentication system.
+
+**Capabilities**
+
+* Passkeys
+* WebAuthn
+* MFA
+* LDAP-compatible directory functions
+* OAuth2/OIDC
+* Strong authentication
+
+---
+
+## 9. ZITADEL
+
+**GitHub:** https://github.com/zitadel/zitadel
+
+Open-source identity platform supporting:
+
+* OIDC
+* OAuth2
+* SAML
+* MFA
+* Passkeys
+* Organizations
+* Identity federation
+* Fine-grained authorization
+
+---
+
+## 10. Casdoor
+
+**GitHub:** https://github.com/casdoor/casdoor
+
+Open-source identity and access management platform.
+
+**Capabilities**
+
+* SSO
+* OAuth2
+* OIDC
+* SAML
+* MFA
+* Social login
+* Identity federation
+* Application integration
+
+---
+
+## 11. Apache Syncope
+
+**Website:** https://syncope.apache.org/
+
+Open-source identity management platform.
+
+Useful for:
+
+* Identity lifecycle
+* Provisioning
+* Policy
+* Federation
+* Enterprise IAM
+
+---
+
+## 12. Shibboleth
+
+**Website:** https://www.shibboleth.net/
+
+Open-source federation and authentication ecosystem.
+
+Particularly relevant to:
+
+* SAML
+* Federation
+* Higher education
+* Enterprise identity federation
+
+---
+
+## 13. FreeIPA
+
+**Website:** https://www.freeipa.org/
+
+Open-source identity management platform integrating:
+
+* LDAP
+* Kerberos
+* Certificates
+* Host identity
+* Policy
+* Authentication
+
+Useful as an enterprise identity foundation.
+
+---
+
+# Risk Engines and Policy Engines
+
+A major advantage of an open architecture is that the **risk engine can be separated from the identity provider**.
+
+## Open-Source / Open Ecosystem Components
+
+### Open Policy Agent
+
+**GitHub:** https://github.com/open-policy-agent/opa
+
+Policy engine for:
+
+* Authorization
+* Contextual decisions
+* Attribute-based access control
+* Policy-as-code
+
+---
+
+### Cedar
+
+**GitHub:** https://github.com/cedar-policy/cedar
+
+AWS-originated open-source authorization policy language.
+
+Useful for:
+
+* Fine-grained authorization
+* Contextual policies
+* Attribute-based access
+
+---
+
+### Casbin
+
+**GitHub:** https://github.com/casbin/casbin
+
+Authorization library supporting:
+
+* RBAC
+* ABAC
+* ACL
+* Custom models
+
+---
+
+### OpenFGA
+
+**GitHub:** https://github.com/openfga/openfga
+
+Open-source fine-grained authorization system inspired by Zanzibar.
+
+Useful for:
+
+* Relationship-based authorization
+* Resource permissions
+* Contextual authorization
+
+---
+
+### Ory Keto
+
+**GitHub:** https://github.com/ory/keto
+
+Open-source authorization server for fine-grained access control.
+
+---
+
+# Behavioral and Continuous Authentication
+
+## BehavioSec
+
+**GitHub:** https://github.com/ForgeRock/BehavioSec
+
+The repository provides a continuous-authentication implementation based on behavioral signals such as keystrokes, cursor movements, touch/screen pressure and device handling.
+
+It illustrates an important RBA pattern:
+
+```text
+Behavioral Signal
+       ↓
+Behavioral Score
+       ↓
+Risk Evaluation
+       ↓
+Step-Up MFA
+       ↓
+Allow / Block
+```
+
+---
+
+## Continuous Authentication System
+
+**GitHub:** https://github.com/ChiUkwuDi/Continuous-Authentication-System
+
+Experimental/open-source continuous authentication implementation using:
+
+* Facial recognition
+* Voice
+* Keystroke dynamics
+* Mouse behavior
+* Behavioral biometrics
+
+Useful primarily as a research/building-block project rather than a mature enterprise IAM platform.
+
+---
+
+# Device and Fingerprinting
+
+Device intelligence is one of the most important RBA inputs.
+
+Useful open-source components include:
+
+## FingerprintJS Open Source
+
+**GitHub:** https://github.com/fingerprintjs/fingerprintjs
+
+Browser/device fingerprinting.
+
+---
+
+## ClientJS
+
+**GitHub:** https://github.com/jackspirou/clientjs
+
+Browser fingerprinting library.
+
+---
+
+## ua-parser
+
+**GitHub:** https://github.com/ua-parser/uap-core
+
+User-agent parsing.
+
+---
+
+## Fingerprint / Device Signals Architecture
+
+```text
+Browser
+   ↓
+Device Fingerprint
+   ↓
+Device Reputation
+   ↓
+Historical Device Profile
+   ↓
+Risk Engine
+```
+
+---
+
+# Threat Intelligence and IP Reputation
+
+RBA becomes substantially stronger when authentication events are correlated with threat intelligence.
+
+## MISP
+
+**GitHub:** https://github.com/MISP/MISP
+
+Open-source threat-intelligence platform.
+
+Useful for:
+
+* IP indicators
+* Domains
+* Malware indicators
+* Threat actors
+* IOC correlation
+
+---
+
+## OpenCTI
+
+**GitHub:** https://github.com/OpenCTI-Platform/opencti
+
+Open-source cyber threat-intelligence platform.
+
+---
+
+## AbuseIPDB
+
+**Website:** https://www.abuseipdb.com/
+
+Useful external IP reputation source.
+
+---
+
+## Spamhaus
+
+**Website:** https://www.spamhaus.org/
+
+IP/domain reputation and threat intelligence.
+
+---
+
+## MaxMind GeoIP
+
+**Website:** https://www.maxmind.com/
+
+Useful for:
+
+* Geolocation
+* ASN
+* Network intelligence
+
+---
+
+# Fraud and Anomaly Detection
+
+## OpenSearch
+
+**GitHub:** https://github.com/opensearch-project/OpenSearch
+
+Useful for:
+
+* Authentication-event analytics
+* Anomaly detection
+* Search
+* Security analytics
+* Dashboards
+
+---
+
+## Elasticsearch
+
+**GitHub:** https://github.com/elastic/elasticsearch
+
+Useful for:
+
+* Authentication telemetry
+* Behavioral analytics
+* Risk-event search
+* Anomaly detection
+
+---
+
+## Apache Kafka
+
+**Website:** https://kafka.apache.org/
+
+Event streaming backbone for RBA.
+
+---
+
+## Redis
+
+**Website:** https://redis.io/
+
+Useful for:
+
+* Real-time risk state
+* Session risk
+* Counters
+* Rate limiting
+* Temporary reputation data
+
+---
+
+## PostgreSQL
+
+**Website:** https://www.postgresql.org/
+
+Useful for:
+
+* User risk profiles
+* Device history
+* Authentication history
+* Policy data
+* Risk decisions
+
+---
+
+# Policy and Access Control
+
+Important open-source components:
+
+| Project           | Primary Role                   |
+| ----------------- | ------------------------------ |
+| Open Policy Agent | Policy-as-code                 |
+| Cedar             | Authorization policy           |
+| Casbin            | RBAC/ABAC                      |
+| OpenFGA           | Fine-grained authorization     |
+| Ory Keto          | Authorization                  |
+| Keycloak          | IAM + authentication policy    |
+| WSO2 IS           | IAM + adaptive authentication  |
+| authentik         | IAM + policy                   |
+| privacyIDEA       | MFA + token policy             |
+| LemonLDAP::NG     | SSO + access policy            |
+| Authelia          | Authentication + access policy |
+
+---
+
+# Authentication Protocols
+
+An RBA architecture should normally support:
+
+* OAuth 2.0
+* OpenID Connect
+* SAML 2.0
+* WebAuthn
+* FIDO2
+* RADIUS
+* LDAP
+* Kerberos
+* SCIM
+* JWT
+* mTLS
+
+Important open-source implementations include:
+
+* Keycloak
+* WSO2 Identity Server
+* authentik
+* Janssen
+* ZITADEL
+* LemonLDAP::NG
+* Authelia
+* privacyIDEA
+* FreeIPA
+* Shibboleth
+* Ory
+
+---
+
+# Security Analytics and SIEM
+
+## Wazuh
+
+**GitHub:** https://github.com/wazuh/wazuh
+
+Open-source security monitoring platform.
+
+Useful for:
+
+* Authentication monitoring
+* Endpoint telemetry
+* Threat detection
+* Log analysis
+* SIEM/XDR functions
+
+---
+
+## Security Onion
+
+**Website:** https://securityonionsolutions.com/
+
+Open-source security monitoring platform integrating multiple security tools.
+
+---
+
+## OpenSearch Security Analytics
+
+**GitHub:** https://github.com/opensearch-project/security-analytics
+
+Useful for correlating:
+
+```text
+Authentication Events
+        +
+Endpoint Events
+        +
+Network Events
+        +
+Threat Intelligence
+        ↓
+Risk Engine
+```
+
+---
+
+# Commercial → Open-Source Mapping
+
+| Commercial Platform           | Open-Source / Open Stack Equivalent                                 |
+| ----------------------------- | ------------------------------------------------------------------- |
+| Cisco Duo RBA                 | Keycloak + privacyIDEA + OPA + device intelligence                  |
+| Silverfort                    | Keycloak/WSO2 + OPA + Wazuh + AD/LDAP + risk engine                 |
+| Ping Identity                 | WSO2 IS / Keycloak + OPA + WebAuthn                                 |
+| ForgeRock                     | WSO2 IS / Keycloak + adaptive authentication extensions             |
+| Okta Adaptive MFA             | Keycloak / authentik / WSO2 + privacyIDEA                           |
+| Microsoft Entra ID Protection | Keycloak/WSO2 + OPA + Wazuh + MISP + behavioral analytics           |
+| IBM Verify                    | WSO2 IS + Keycloak + OPA + SIEM                                     |
+| RSA Adaptive Authentication   | WSO2 + risk engine + ML + threat intelligence                       |
+| SecureAuth                    | WSO2 + Keycloak + device fingerprint + GeoIP + behavioral analytics |
+| OneLogin                      | authentik / Keycloak / ZITADEL + privacyIDEA                        |
+| Adaptive MFA                  | Keycloak + privacyIDEA                                              |
+| Continuous Authentication     | Keycloak + behavioral analytics + session-risk engine               |
+| Risk-Based Access             | OPA + Keycloak + telemetry                                          |
+| Identity Threat Detection     | Wazuh + OpenSearch + MISP                                           |
+| Device Risk                   | FingerprintJS + device database + risk engine                       |
+| IP Risk                       | MISP + AbuseIPDB + GeoIP + ASN intelligence                         |
+
+---
+
+# RBA Architecture
+
+```mermaid
+flowchart TD
+
+A[User] --> B[Application]
+
+B --> C[Identity Provider]
+
+C --> D[Authentication Request]
+
+D --> E[Risk Engine]
+
+E --> F[Device Intelligence]
+E --> G[IP Reputation]
+E --> H[Geo Location]
+E --> I[Behavior Analytics]
+E --> J[Threat Intelligence]
+E --> K[Identity Risk]
+E --> L[Session Context]
+
+E --> M[Risk Score]
+
+M --> N{Policy Decision}
+
+N -->|Low Risk| O[Allow]
+N -->|Medium Risk| P[Step-Up MFA]
+N -->|High Risk| Q[Block]
+N -->|Critical| R[Revoke Session]
+
+P --> S[WebAuthn / FIDO2 / TOTP / Push]
+
+S --> T[Authentication Result]
+
+T --> U[Update Risk Profile]
+```
+
+---
+
+# Reference Architecture
+
+```mermaid
+flowchart LR
+
+U[User] --> APP[Application]
+
+APP --> IDP[Keycloak / WSO2 / authentik]
+
+IDP --> RISK[Risk Engine]
+
+RISK --> DEVICE[Device Intelligence]
+
+RISK --> IP[IP Reputation]
+
+RISK --> GEO[GeoIP]
+
+RISK --> BEHAVIOR[Behavior Analytics]
+
+RISK --> TI[Threat Intelligence]
+
+RISK --> SIEM[Wazuh / OpenSearch]
+
+RISK --> POLICY[OPA / Cedar / Casbin]
+
+POLICY --> DECISION[Allow / MFA / Block]
+
+DECISION --> IDP
+
+IDP --> MFA[privacyIDEA / WebAuthn / FIDO2]
+
+MFA --> APP
+```
+
+---
+
+# Adaptive MFA Flow
+
+```mermaid
+sequenceDiagram
+
+participant U as User
+participant A as Application
+participant I as Identity Provider
+participant R as Risk Engine
+participant M as MFA
+participant S as SIEM
+
+U->>A: Login
+A->>I: Authentication request
+I->>R: Send context
+R->>R: Evaluate risk signals
+R->>R: Calculate risk score
+
+alt Low Risk
+    R->>I: Allow
+    I->>A: Authentication success
+else Medium Risk
+    R->>I: Require MFA
+    I->>M: Step-up challenge
+    M->>I: MFA result
+    I->>A: Authentication success
+else High Risk
+    R->>I: Block
+    I->>A: Access denied
+end
+
+R->>S: Record risk decision
+```
+
+---
+
+# Risk Scoring
+
+A simple open-source RBA implementation can start with a weighted model.
+
+```text
+Risk Score =
+    Device Risk
+  + IP Risk
+  + Geo Risk
+  + Behavior Risk
+  + Credential Risk
+  + Threat Intelligence Risk
+  + Session Risk
+  + Application Risk
+```
+
+Example:
+
+| Signal                         | Weight |
+| ------------------------------ | -----: |
+| New device                     |    +20 |
+| Unknown IP                     |    +15 |
+| Malicious IP                   |    +50 |
+| Impossible travel              |    +40 |
+| Tor exit node                  |    +30 |
+| Abnormal login time            |    +10 |
+| Credential leak                |    +50 |
+| Failed authentication burst    |    +25 |
+| Trusted device                 |    -20 |
+| Trusted network                |    -15 |
+| Strong WebAuthn authentication |    -30 |
+
+Example policy:
+
+```text
+0–29    → Allow
+30–49   → Additional verification
+50–69   → Strong MFA
+70–89   → Restricted access
+90–100  → Block
+```
+
+> This scoring model is illustrative. Production systems should calibrate thresholds using real authentication telemetry, false-positive rates, attack simulations and business risk.
+
+---
+
+# Risk Decision Engine
+
+A production implementation should separate:
+
+```text
+SIGNALS
+   ↓
+FEATURE ENGINEERING
+   ↓
+RISK MODEL
+   ↓
+POLICY ENGINE
+   ↓
+AUTHENTICATION DECISION
+```
+
+For example:
+
+```text
+Device = New
+IP = Residential
+Geo = Normal
+Time = Normal
+Behavior = Normal
+Threat Intel = Clean
+Credential = Clean
+
+                ↓
+
+Risk Score = 22
+
+                ↓
+
+ALLOW
+```
+
+Whereas:
+
+```text
+Device = New
+IP = Tor
+Geo = Impossible Travel
+Behavior = Abnormal
+Credential = Leaked
+
+                ↓
+
+Risk Score = 91
+
+                ↓
+
+BLOCK
+```
+
+---
+
+# Continuous Authentication
+
+Traditional authentication:
+
+```text
+LOGIN
+  ↓
+MFA
+  ↓
+SESSION
+```
+
+Continuous authentication:
+
+```text
+LOGIN
+  ↓
+RISK ASSESSMENT
+  ↓
+MFA
+  ↓
+SESSION
+  ↓
+CONTINUOUS TELEMETRY
+  ↓
+RISK RE-EVALUATION
+  ↓
+ALLOW / STEP-UP / REVOKE
+```
+
+A possible open-source architecture:
+
+```text
+Keycloak
+   +
+Behavior Analytics
+   +
+Device Fingerprinting
+   +
+Wazuh
+   +
+OpenSearch
+   +
+OPA
+   +
+WebAuthn
+```
+
+---
+
+# Zero Trust Architecture
+
+RBA fits naturally into Zero Trust.
+
+```mermaid
+flowchart TD
+
+A[Identity] --> E[Risk Engine]
+B[Device] --> E
+C[Network] --> E
+D[Behavior] --> E
+F[Threat Intelligence] --> E
+G[Application] --> E
+H[Session] --> E
+
+E --> I[Policy Engine]
+
+I --> J{Decision}
+
+J -->|Allow| K[Access]
+J -->|Step-Up| L[MFA]
+J -->|Restrict| M[Limited Access]
+J -->|Block| N[Deny]
+J -->|Revoke| O[Session Revocation]
+```
+
+---
+
+# Open-Source RBA Stack
+
+A strong fully self-hosted architecture can look like:
+
+```text
+                    ┌───────────────────┐
+                    │     USERS         │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ APPLICATIONS      │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ KEYCLOAK / WSO2   │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ RISK ENGINE       │
+                    └─────────┬─────────┘
+                              │
+         ┌────────────────────┼────────────────────┐
+         ▼                    ▼                    ▼
+   Device Risk          IP Reputation        Behavior
+         │                    │                    │
+         └────────────────────┼────────────────────┘
+                              ▼
+                    ┌───────────────────┐
+                    │ POLICY ENGINE     │
+                    │ OPA / Cedar       │
+                    └─────────┬─────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              ▼               ▼               ▼
+            ALLOW           MFA             BLOCK
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ privacyIDEA /      │
+                    │ WebAuthn / FIDO2   │
+                    └───────────────────┘
+```
+
+---
+
+# Capability Matrix
+
+| Capability                | Duo | Silverfort | Ping | Okta | Entra ID Protection | SecureAuth | WSO2 | Keycloak | privacyIDEA | authentik |
+| ------------------------- | --: | ---------: | ---: | ---: | ------------------: | ---------: | ---: | -------: | ----------: | --------: |
+| RBA                       |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ◐ |           ◐ |         ◐ |
+| Adaptive MFA              |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ✅ |           ✅ |         ✅ |
+| Risk Engine               |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ◐ |           ◐ |         ◐ |
+| Device Intelligence       |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ◐ |           ◐ |         ◐ |
+| Behavioral Analytics      |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ◐ |           ❌ |         ◐ |
+| Geo Risk                  |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ◐ |           ◐ |         ◐ |
+| IP Reputation             |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ◐ |        ◐ |           ◐ |         ◐ |
+| Continuous Authentication |   ✅ |          ✅ |    ✅ |    ◐ |                   ✅ |          ✅ |    ◐ |        ◐ |           ◐ |         ◐ |
+| WebAuthn                  |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ✅ |           ✅ |         ✅ |
+| SSO                       |   ✅ |          ✅ |    ✅ |    ✅ |                   ✅ |          ✅ |    ✅ |        ✅ |           ◐ |         ✅ |
+| Open Source               |   ❌ |          ❌ |    ❌ |    ❌ |                   ❌ |          ❌ |    ✅ |        ✅ |           ✅ |         ✅ |
+| Self-hosted               |   ◐ |          ◐ |    ◐ |    ❌ |                   ◐ |          ◐ |    ✅ |        ✅ |           ✅ |         ✅ |
+
+Legend:
+
+```text
+✅ = Strong/native capability
+◐ = Possible through configuration/extensions/integration
+❌ = Not the primary capability
+```
+
+---
+
+# Recommended Open-Source Stacks
+
+## 1. Best Overall Enterprise RBA
+
+```text
+WSO2 Identity Server
++
+OPA
++
+privacyIDEA
++
+MISP
++
+MaxMind GeoIP
++
+OpenSearch
++
+Wazuh
++
+PostgreSQL
++
+Redis
+```
+
+**Best for:**
+
+* Enterprise IAM
+* Adaptive authentication
+* Risk-based MFA
+* SIEM integration
+* Self-hosting
+
+---
+
+# 2. Best Keycloak-Centric Architecture
+
+```text
+Keycloak
++
+Custom Risk Engine
++
+OPA
++
+privacyIDEA
++
+FingerprintJS
++
+MISP
++
+GeoIP
++
+Redis
++
+PostgreSQL
++
+OpenSearch
+```
+
+**Best for:**
+
+* Developers
+* Custom IAM
+* Kubernetes
+* Cloud-native applications
+* OIDC/OAuth2 environments
+
+---
+
+# 3. Best Lightweight Architecture
+
+```text
+authentik
++
+WebAuthn
++
+OPA
++
+Redis
++
+GeoIP
++
+OpenSearch
+```
+
+**Best for:**
+
+* SMB
+* Homelab
+* Internal applications
+* Self-hosted infrastructure
+
+---
+
+# 4. Best MFA-Focused Architecture
+
+```text
+Keycloak
++
+privacyIDEA
++
+WebAuthn
++
+FIDO2
++
+OPA
+```
+
+**Best for:**
+
+```text
+Adaptive MFA
++
+Strong Authentication
++
+Policy Enforcement
+```
+
+---
+
+# 5. Best Security-Analytics Architecture
+
+```text
+Keycloak
++
+Wazuh
++
+OpenSearch
++
+MISP
++
+OPA
++
+Redis
++
+privacyIDEA
+```
+
+Authentication events flow into the security analytics layer:
+
+```text
+Authentication
+      ↓
+Risk Events
+      ↓
+Wazuh
+      ↓
+OpenSearch
+      ↓
+Risk Correlation
+      ↓
+Policy Decision
+      ↓
+MFA / Allow / Block
+```
+
+---
+
+# What Open Source Can Replace
+
+With the correct architecture, open-source components can reproduce a substantial portion of commercial RBA functionality.
+
+### Can be reproduced
+
+* Adaptive MFA
+* Risk-based MFA
+* Contextual authentication
+* Device trust
+* IP risk
+* Geo risk
+* Impossible travel
+* Authentication history
+* Behavioral scoring
+* Threat-intelligence correlation
+* Risk scoring
+* Policy-based access
+* Step-up authentication
+* WebAuthn
+* FIDO2
+* TOTP
+* Session revocation
+* SIEM integration
+* Identity federation
+* OAuth2
+* OIDC
+* SAML
+* RADIUS
+* LDAP
+* Custom risk models
+* ML-based anomaly detection
+
+---
+
+# What Open Source Cannot Replace Automatically
+
+The important limitation is that open-source components do **not automatically provide the enormous proprietary telemetry networks and detection models** behind some commercial platforms.
+
+For example, an open-source Keycloak installation does not automatically provide:
+
+```text
+Global threat intelligence
++
+Billions of authentication events
++
+Proprietary behavioral models
++
+Commercial device reputation
++
+Commercial fraud intelligence
++
+Vendor-specific identity telemetry
+```
+
+Commercial platforms may therefore have an advantage in:
+
+* Global reputation intelligence
+* Proprietary behavioral models
+* Detection engineering
+* Managed threat intelligence
+* Vendor-maintained ML models
+* Enterprise support
+* Integrated device intelligence
+* Managed infrastructure
+* Large-scale telemetry
+
+The open-source advantage is:
+
+```text
+CONTROL
++
+CUSTOMIZATION
++
+SELF-HOSTING
++
+TRANSPARENCY
++
+NO VENDOR LOCK-IN
+```
+
+---
+
+# Open-Source RBA vs Commercial RBA
+
+| Area                    | Commercial     | Open Source                  |
+| ----------------------- | -------------- | ---------------------------- |
+| Identity Provider       | Excellent      | Excellent                    |
+| MFA                     | Excellent      | Excellent                    |
+| WebAuthn                | Excellent      | Excellent                    |
+| Risk Engine             | Excellent      | Build/integrate              |
+| Device Intelligence     | Excellent      | Build/integrate              |
+| Global Threat Intel     | Excellent      | Integrate                    |
+| Behavioral ML           | Excellent      | Build/integrate              |
+| SIEM                    | Integrated     | Strong OSS options           |
+| Policy Engine           | Integrated     | Excellent                    |
+| Customization           | Medium         | Excellent                    |
+| Self Hosting            | Limited/varies | Excellent                    |
+| Vendor Lock-in          | Higher         | Lower                        |
+| Initial Complexity      | Lower          | Higher                       |
+| Engineering Requirement | Lower          | Higher                       |
+| Cost at Scale           | Subscription   | Infrastructure + engineering |
+
+---
+
+# Project-Specific Open-Source Alternatives
+
+## Cisco Duo Alternative
+
+```text
+Keycloak
++
+privacyIDEA
++
+WebAuthn
++
+OPA
++
+Device Fingerprinting
++
+MISP
+```
+
+---
+
+## Silverfort Alternative
+
+Silverfort's broader identity-threat model is difficult to reproduce with a single open-source application.
+
+A reasonable architecture is:
+
+```text
+Keycloak / WSO2
++
+FreeIPA / LDAP / Active Directory
++
+Wazuh
++
+OpenSearch
++
+OPA
++
+MISP
++
+Risk Engine
+```
+
+This can provide:
+
+```text
+Identity Monitoring
++
+Risk Detection
++
+Adaptive Authentication
++
+Policy Enforcement
+```
+
+---
+
+## Ping Identity Alternative
+
+```text
+WSO2 Identity Server
++
+Keycloak
++
+OPA
++
+privacyIDEA
++
+WebAuthn
+```
+
+---
+
+## ForgeRock Alternative
+
+```text
+WSO2 Identity Server
++
+Keycloak
++
+Custom Authentication Flows
++
+OPA
++
+Behavior Analytics
+```
+
+---
+
+## Okta Adaptive MFA Alternative
+
+```text
+Keycloak / authentik
++
+privacyIDEA
++
+WebAuthn
++
+OPA
++
+Device Intelligence
+```
+
+---
+
+## Microsoft Entra ID Protection Alternative
+
+```text
+Keycloak
++
+Wazuh
++
+OpenSearch
++
+MISP
++
+OPA
++
+Device Intelligence
++
+Behavior Analytics
+```
+
+---
+
+## SecureAuth Alternative
+
+```text
+WSO2
++
+Device Fingerprinting
++
+GeoIP
++
+Behavior Analytics
++
+OPA
++
+WebAuthn
+```
+
+SecureAuth's current architecture explicitly combines device, location/network and behavioral risk analyzers, making this a particularly good model for an open-source RBA design.
+
+---
+
+# Complete Open-Source RBA Architecture
+
+```mermaid
+flowchart TB
+
+USER[User]
+
+APP[Application]
+
+IDP[Keycloak / WSO2 / authentik]
+
+RISK[Risk Engine]
+
+DEVICE[Device Fingerprinting]
+
+GEO[GeoIP / Geo-velocity]
+
+IPREP[IP Reputation]
+
+BEHAVIOR[Behavior Analytics]
+
+THREAT[MISP / OpenCTI]
+
+IDENTITY[Identity Risk]
+
+SESSION[Session Risk]
+
+POLICY[OPA / Cedar / Casbin]
+
+MFA[WebAuthn / FIDO2 / privacyIDEA]
+
+SIEM[Wazuh / OpenSearch]
+
+DB[(PostgreSQL)]
+
+CACHE[(Redis)]
+
+USER --> APP
+APP --> IDP
+IDP --> RISK
+
+RISK --> DEVICE
+RISK --> GEO
+RISK --> IPREP
+RISK --> BEHAVIOR
+RISK --> THREAT
+RISK --> IDENTITY
+RISK --> SESSION
+
+RISK --> POLICY
+
+POLICY -->|LOW| ALLOW[ALLOW]
+POLICY -->|MEDIUM| MFA
+POLICY -->|HIGH| BLOCK[BLOCK]
+POLICY -->|CRITICAL| REVOKE[REVOKE SESSION]
+
+MFA --> IDP
+
+RISK --> DB
+RISK --> CACHE
+
+IDP --> SIEM
+RISK --> SIEM
+MFA --> SIEM
+```
+
+---
+
+# Risk Engine Design
+
+A production-grade open-source RBA engine should ideally contain these components:
+
+```text
+┌─────────────────────────────────────────────┐
+│              RISK ENGINE                    │
+├─────────────────────────────────────────────┤
+│                                             │
+│  Signal Collector                           │
+│       ↓                                     │
+│  Feature Extraction                         │
+│       ↓                                     │
+│  Rule Engine                                │
+│       ↓                                     │
+│  ML / Anomaly Model                         │
+│       ↓                                     │
+│  Risk Aggregator                            │
+│       ↓                                     │
+│  Policy Engine                              │
+│       ↓                                     │
+│  Decision                                   │
+│                                             │
+└─────────────────────────────────────────────┘
+```
+
+---
+
+# Example Risk Engine API
+
+```http
+POST /risk/evaluate
+Content-Type: application/json
+```
+
+```json
+{
+  "user": "user123",
+  "application": "finance",
+  "ip": "203.0.113.10",
+  "country": "IN",
+  "device_id": "device-123",
+  "device_trusted": false,
+  "vpn": true,
+  "tor": false,
+  "new_device": true,
+  "impossible_travel": false,
+  "behavior_anomaly": true,
+  "credential_compromised": false
+}
+```
+
+Response:
+
+```json
+{
+  "risk_score": 67,
+  "risk_level": "HIGH",
+  "decision": "STEP_UP",
+  "required_authentication": "WEBAUTHN"
+}
+```
+
+---
+
+# Example Policy
+
+```yaml
+risk_policy:
+
+  low:
+    score: 0-29
+    action: allow
+
+  medium:
+    score: 30-49
+    action: step_up
+    factor: totp
+
+  high:
+    score: 50-79
+    action: step_up
+    factor: webauthn
+
+  critical:
+    score: 80-100
+    action: block
+```
+
+---
+
+# Event-Driven RBA
+
+Kafka or another event-streaming system can be used to process authentication events in real time.
+
+```mermaid
+flowchart LR
+
+AUTH[Authentication Event]
+
+AUTH --> KAFKA[Kafka]
+
+KAFKA --> STREAM[Stream Processing]
+
+STREAM --> FEATURE[Feature Store]
+
+FEATURE --> MODEL[Risk Model]
+
+MODEL --> POLICY[Policy Engine]
+
+POLICY --> DECISION[Decision]
+
+DECISION --> IDP[Identity Provider]
+
+DECISION --> SIEM[SIEM]
+```
+
+---
+
+# ML-Based RBA
+
+An advanced implementation can use machine learning.
+
+```text
+Authentication Events
+        ↓
+Feature Engineering
+        ↓
+Historical User Profile
+        ↓
+Anomaly Detection
+        ↓
+Risk Probability
+        ↓
+Policy Engine
+        ↓
+Adaptive Authentication
+```
+
+Potential open-source ML stack:
+
+```text
+Python
++
+scikit-learn
++
+XGBoost
++
+PyTorch
++
+ONNX Runtime
++
+MLflow
++
+Redis
++
+PostgreSQL
+```
+
+Useful signals:
+
+* Login frequency
+* Login hour
+* Device changes
+* IP changes
+* Geographic distance
+* Authentication failures
+* MFA failures
+* Application accessed
+* Resource sensitivity
+* Session duration
+* Behavioral deviation
+
+---
+
+# High-Risk Authentication Example
+
+```text
+User: Alice
+
+Normal:
+Country = India
+City = Kolkata
+Device = Laptop-01
+Time = 09:00–18:00
+IP = Corporate Network
+
+Current Login:
+
+Country = Germany
+Device = Unknown
+Time = 03:17
+IP = Tor Exit Node
+Behavior = Abnormal
+Credential = Previously Leaked
+
+                    ↓
+
+              RISK ENGINE
+
+                    ↓
+
+             RISK = 94/100
+
+                    ↓
+
+                 BLOCK
+```
+
+---
+
+# Medium-Risk Authentication Example
+
+```text
+User: Bob
+
+Known identity
+Known country
+New device
+Unknown Wi-Fi
+Normal behavior
+No threat intelligence match
+
+                    ↓
+
+              RISK = 43
+
+                    ↓
+
+             STEP-UP MFA
+
+                    ↓
+
+               WebAuthn
+
+                    ↓
+
+                 ALLOW
+```
+
+---
+
+# Low-Risk Authentication Example
+
+```text
+User: Carol
+
+Known device
+Known network
+Normal location
+Normal time
+Normal behavior
+No threat intelligence
+Strong authentication
+
+                    ↓
+
+              RISK = 8
+
+                    ↓
+
+                 ALLOW
+```
+
+---
+
+# Identity + Risk + Authorization
+
+The strongest architecture separates three decisions:
+
+```text
+WHO ARE YOU?
+     ↓
+Identity
+
+HOW RISKY IS THIS REQUEST?
+     ↓
+Risk
+
+WHAT ARE YOU ALLOWED TO DO?
+     ↓
+Authorization
+```
+
+Therefore:
+
+```text
+Authentication ≠ Risk ≠ Authorization
+```
+
+A mature architecture combines all three.
+
+---
+
+# Recommended Architecture by Organization Size
+
+## Small Organization
+
+```text
+authentik
++
+WebAuthn
++
+TOTP
++
+OPA
+```
+
+---
+
+## Medium Organization
+
+```text
+Keycloak
++
+privacyIDEA
++
+OPA
++
+Wazuh
++
+OpenSearch
+```
+
+---
+
+## Large Enterprise
+
+```text
+WSO2 / Keycloak
++
+privacyIDEA
++
+OPA
++
+MISP
++
+OpenCTI
++
+Wazuh
++
+OpenSearch
++
+Kafka
++
+Redis
++
+PostgreSQL
++
+ML Risk Engine
+```
+
+---
+
+## High-Security Environment
+
+```text
+Keycloak / WSO2
++
+FIDO2 / WebAuthn
++
+privacyIDEA
++
+OPA
++
+Device Intelligence
++
+MISP
++
+Behavior Analytics
++
+Wazuh
++
+OpenSearch
++
+ML Risk Engine
++
+Continuous Session Evaluation
+```
+
+---
+
+# Top Open-Source Shortlist
+
+## Tier 1 — Most Important
+
+| Project                  | Role                              |
+| ------------------------ | --------------------------------- |
+| **WSO2 Identity Server** | Adaptive authentication / IAM     |
+| **Keycloak**             | IAM / MFA / authentication flows  |
+| **privacyIDEA**          | MFA / token management            |
+| **authentik**            | IAM / SSO / policy                |
+| **OPA**                  | Policy engine                     |
+| **MISP**                 | Threat intelligence               |
+| **Wazuh**                | Security monitoring               |
+| **OpenSearch**           | Analytics / SIEM                  |
+| **WebAuthn/FIDO2**       | Phishing-resistant authentication |
+
+---
+
+## Tier 2 — Highly Useful
+
+| Project       | Role                       |
+| ------------- | -------------------------- |
+| Janssen       | Open-source IAM            |
+| ZITADEL       | IAM                        |
+| LemonLDAP::NG | SSO / access control       |
+| Authelia      | Authentication             |
+| Kanidm        | Identity / authentication  |
+| Casdoor       | IAM                        |
+| OpenFGA       | Fine-grained authorization |
+| Cedar         | Authorization              |
+| Casbin        | RBAC/ABAC                  |
+| OpenCTI       | Threat intelligence        |
+| Apache Kafka  | Event streaming            |
+| Redis         | Real-time state            |
+| PostgreSQL    | Identity/risk data         |
+
+---
+
+## Tier 3 — RBA Building Blocks
+
+| Project / Technology | Role                       |
+| -------------------- | -------------------------- |
+| FingerprintJS        | Device fingerprinting      |
+| MaxMind GeoIP        | Geolocation                |
+| AbuseIPDB            | IP reputation              |
+| Spamhaus             | Threat reputation          |
+| OpenCV               | Behavioral/computer vision |
+| PyTorch              | ML                         |
+| scikit-learn         | ML                         |
+| XGBoost              | Risk modelling             |
+| MLflow               | ML lifecycle               |
+| ONNX Runtime         | Model inference            |
+| Prometheus           | Metrics                    |
+| Grafana              | Visualization              |
+| Loki                 | Log aggregation            |
+| Vector               | Telemetry pipeline         |
+| Fluent Bit           | Log collection             |
+
+---
+
+# Best Open-Source Choice by Requirement
+
+| Requirement                 | Recommended Project                       |
+| --------------------------- | ----------------------------------------- |
+| Adaptive authentication     | **WSO2 Identity Server**                  |
+| General-purpose IAM         | **Keycloak**                              |
+| Adaptive MFA building block | **privacyIDEA**                           |
+| Self-hosted SSO             | **authentik**                             |
+| Policy engine               | **OPA**                                   |
+| Fine-grained authorization  | **OpenFGA**                               |
+| Threat intelligence         | **MISP**                                  |
+| Threat intelligence graph   | **OpenCTI**                               |
+| Security monitoring         | **Wazuh**                                 |
+| SIEM/search                 | **OpenSearch**                            |
+| Device fingerprinting       | **FingerprintJS**                         |
+| WebAuthn                    | **Keycloak / authentik / privacyIDEA**    |
+| Identity directory          | **FreeIPA / Kanidm**                      |
+| Federation                  | **Shibboleth / Keycloak / WSO2**          |
+| ML risk engine              | **Python + scikit-learn/XGBoost/PyTorch** |
+| Event streaming             | **Kafka**                                 |
+| Real-time state             | **Redis**                                 |
+
+---
+
+# The Most Practical Open-Source Duo/Okta Alternative
+
+If the primary objective is:
+
+> **"Build an open-source Risk-Based Authentication platform rather than simply installing an open-source IdP."**
+
+the most practical architecture is:
+
+```text
+                 ┌─────────────────┐
+                 │    Keycloak     │
+                 │       or        │
+                 │      WSO2       │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │   RISK ENGINE   │
+                 └────────┬────────┘
+                          │
+       ┌──────────────────┼──────────────────┐
+       │                  │                  │
+       ▼                  ▼                  ▼
+   Device Risk        IP Risk           Behavior
+       │                  │                  │
+       └──────────────────┼──────────────────┘
+                          ▼
+                 ┌─────────────────┐
+                 │      OPA        │
+                 └────────┬────────┘
+                          │
+              ┌───────────┼───────────┐
+              ▼           ▼           ▼
+            ALLOW        MFA         BLOCK
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │  privacyIDEA /  │
+                 │ WebAuthn / FIDO │
+                 └─────────────────┘
+```
+
+This is much closer to the architecture of a true RBA platform than simply deploying an MFA server.
+
+---
+
+# Important Architectural Principle
+
+A common mistake is:
+
+```text
+Keycloak
+    ↓
+MFA
+```
+
+and calling it "Risk-Based Authentication."
+
+That is **adaptive MFA only if the MFA decision actually changes according to risk**.
+
+A true RBA architecture should be:
+
+```text
+Authentication
+      ↓
+Context Collection
+      ↓
+Risk Calculation
+      ↓
+Policy Evaluation
+      ↓
+Dynamic Authentication Requirement
+      ↓
+Authentication
+      ↓
+Continuous Risk Monitoring
+```
+
+---
+
+# RBA Decision Model
+
+```mermaid
+flowchart TD
+
+A[Authentication Request]
+
+A --> B[Collect Signals]
+
+B --> C[Device]
+B --> D[IP]
+B --> E[Location]
+B --> F[Behavior]
+B --> G[Threat Intelligence]
+B --> H[Identity]
+B --> I[Session]
+B --> J[Application]
+
+C --> K[Risk Engine]
+D --> K
+E --> K
+F --> K
+G --> K
+H --> K
+I --> K
+J --> K
+
+K --> L[Risk Score]
+
+L --> M{Policy}
+
+M -->|0-29| N[Allow]
+M -->|30-49| O[Basic Step-Up]
+M -->|50-79| P[Strong MFA]
+M -->|80-89| Q[Restricted Access]
+M -->|90-100| R[Block / Revoke]
+```
+
+---
+
+# Security Considerations
+
+A production RBA system should protect against:
+
+* MFA fatigue
+* MFA push bombing
+* Credential stuffing
+* Password spraying
+* Session hijacking
+* Token theft
+* Cookie theft
+* Device spoofing
+* Fingerprint spoofing
+* IP reputation manipulation
+* VPN/Tor evasion
+* GeoIP inaccuracies
+* False positives
+* Model poisoning
+* Behavioral-model poisoning
+* Risk-engine bypass
+* Policy misconfiguration
+* Break-glass account lockout
+
+Important controls:
+
+```text
+FIDO2 / WebAuthn
++
+Phishing-resistant MFA
++
+Short-lived sessions
++
+Token binding where applicable
++
+Continuous risk evaluation
++
+Strong logging
++
+Policy versioning
++
+Audit trails
++
+Rate limiting
++
+Break-glass accounts
+```
+
+---
+
+# Privacy Considerations
+
+Risk-based authentication can process highly sensitive contextual information.
+
+Potentially sensitive data includes:
+
+* Location
+* IP address
+* Device fingerprint
+* Behavioral patterns
+* Login history
+* Biometric/behavioral characteristics
+* Network information
+
+Therefore:
+
+```text
+Collect minimum necessary data
+        +
+Encrypt data
+        +
+Limit retention
+        +
+Apply access controls
+        +
+Audit risk-model usage
+        +
+Avoid unnecessary behavioral surveillance
+```
+
+---
+
+# Licensing Considerations
+
+Always verify the current license before deploying an open-source component commercially.
+
+Particularly distinguish between:
+
+```text
+Open Source
+Source Available
+Open Core
+Dual Licensed
+Commercial Edition
+Managed SaaS
+```
+
+Examples:
+
+* Keycloak → open source
+* WSO2 Identity Server → open-source project with commercial offerings
+* privacyIDEA → open source
+* authentik → open-source project with commercial/enterprise offerings
+* OPA → open source
+* MISP → open source
+* Wazuh → open source
+* OpenSearch → open-source project
+* Some device-intelligence and threat-intelligence services → proprietary APIs
+
+Do not assume that an open-source component automatically provides all commercial enterprise functionality.
+
+---
+
+# Open-Source RBA Maturity Model
+
+```text
+LEVEL 1
+Static MFA
+   ↓
+LEVEL 2
+Contextual MFA
+   ↓
+LEVEL 3
+Risk-Based MFA
+   ↓
+LEVEL 4
+Behavioral Risk
+   ↓
+LEVEL 5
+Continuous Authentication
+   ↓
+LEVEL 6
+Identity Threat Detection
+   ↓
+LEVEL 7
+Continuous Adaptive Access
+```
+
+A sophisticated open-source implementation should target:
+
+```text
+LEVEL 5–7
+```
+
+rather than merely adding TOTP to an identity provider.
+
+---
+
+# Recommended Starting Stack
+
+For a new project, a strong starting point is:
+
+```text
+┌────────────────────────────────────┐
+│            APPLICATIONS            │
+└────────────────┬───────────────────┘
+                 │
+                 ▼
+┌────────────────────────────────────┐
+│             KEYCLOAK               │
+│          Identity / MFA            │
+└────────────────┬───────────────────┘
+                 │
+                 ▼
+┌────────────────────────────────────┐
+│            RISK ENGINE             │
+│      Python / Go / Java            │
+└────────────────┬───────────────────┘
+                 │
+       ┌─────────┼──────────┐
+       ▼         ▼          ▼
+   Device      IP/Geo    Behavior
+       │         │          │
+       └─────────┼──────────┘
+                 ▼
+┌────────────────────────────────────┐
+│               OPA                  │
+│          Policy Engine             │
+└────────────────┬───────────────────┘
+                 │
+       ┌─────────┼─────────┐
+       ▼         ▼         ▼
+     ALLOW      MFA       BLOCK
+                 │
+                 ▼
+┌────────────────────────────────────┐
+│          privacyIDEA /             │
+│       WebAuthn / FIDO2             │
+└────────────────────────────────────┘
+```
+
+---
+
+# Final Recommendation
+
+## Best direct open-source RBA candidate
+
+**WSO2 Identity Server**
+
+Best fit when the requirement is specifically:
+
+```text
+Identity
++
+Adaptive Authentication
++
+Risk Signals
++
+Authentication Policies
+```
+
+## Best general-purpose foundation
+
+**Keycloak**
+
+Best when the organization wants maximum customization and a huge developer ecosystem.
+
+## Best MFA engine
+
+**privacyIDEA**
+
+Best when token/MFA infrastructure is the primary requirement.
+
+## Best lightweight self-hosted IAM
+
+**authentik**
+
+Best for simpler deployments and infrastructure teams.
+
+## Best policy engine
+
+**Open Policy Agent**
+
+Best for separating risk decisions from identity infrastructure.
+
+## Best threat-intelligence component
+
+**MISP**
+
+Best for integrating threat indicators into the risk calculation.
+
+## Best security-monitoring component
+
+**Wazuh + OpenSearch**
+
+Best for collecting and correlating authentication/security telemetry.
+
+---
+
+# The Ideal Open-Source "Duo / Okta Adaptive MFA" Stack
+
+```text
+                    USER
+                     │
+                     ▼
+              ┌─────────────┐
+              │  KEYCLOAK   │
+              │  / WSO2     │
+              └──────┬──────┘
+                     │
+                     ▼
+              ┌─────────────┐
+              │ RISK ENGINE │
+              └──────┬──────┘
+                     │
+     ┌───────────────┼────────────────┐
+     │               │                │
+     ▼               ▼                ▼
+ DEVICE          IP / GEO         BEHAVIOR
+ RISK             RISK             RISK
+     │               │                │
+     └───────────────┼────────────────┘
+                     │
+                     ▼
+              ┌─────────────┐
+              │     OPA     │
+              └──────┬──────┘
+                     │
+          ┌──────────┼──────────┐
+          ▼          ▼          ▼
+        ALLOW       MFA        BLOCK
+                     │
+                     ▼
+              ┌─────────────┐
+              │ privacyIDEA │
+              │  WebAuthn   │
+              │   FIDO2     │
+              └─────────────┘
+```
+
+This architecture provides the strongest path toward an **open-source, self-hosted Risk-Based Authentication platform** while retaining the ability to add proprietary or commercial intelligence sources later.
+
+---
+
+# Conclusion
+
+Risk-Based Authentication is not simply another MFA product.
+
+A mature RBA platform combines:
+
+```text
+Identity
++
+Authentication
++
+Device Intelligence
++
+Network Intelligence
++
+Geolocation
++
+Behavior Analytics
++
+Threat Intelligence
++
+Risk Scoring
++
+Policy Engine
++
+Adaptive MFA
++
+Continuous Session Evaluation
+```
+
+The commercial leaders — **Cisco Duo, Silverfort, Ping Identity, ForgeRock, Okta, Microsoft Entra ID Protection, IBM Verify, RSA, SecureAuth and OneLogin** — package many of these capabilities into integrated products.
+
+The open-source ecosystem takes a different approach.
+
+The strongest strategy is to assemble:
+
+```text
+WSO2 / Keycloak
+        +
+privacyIDEA
+        +
+OPA
+        +
+MISP / OpenCTI
+        +
+Wazuh / OpenSearch
+        +
+Device Intelligence
+        +
+GeoIP / IP Reputation
+        +
+Behavior Analytics
+        +
+Redis / PostgreSQL / Kafka
+        +
+ML Risk Engine
+```
+
+The result can become a highly customizable:
+
+> **Open-Source Risk-Based Authentication + Adaptive MFA + Continuous Authentication + Identity Risk Platform**
+
+with substantially less vendor lock-in and considerably more control over the risk model, authentication policies and security telemetry.
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+Please submit:
+
+* New RBA platforms
+* Open-source IAM projects
+* Adaptive-authentication implementations
+* Risk engines
+* Device-intelligence projects
+* Behavioral-authentication projects
+* Threat-intelligence integrations
+* Policy engines
+* Security analytics tools
+* Architecture improvements
+* Licensing corrections
+
+---
+
+# Disclaimer
+
+This README is intended as a technical reference and architectural comparison.
+
+Capabilities, licensing models, product names, commercial editions and feature availability change over time. Always verify the current documentation and license of each project before production deployment.
+
+RBA thresholds and risk models shown in this document are illustrative and should not be treated as universal security recommendations.
+
+---
+
+## Recommended Starting Point
+
+```text
+For maximum open-source flexibility:
+
+Keycloak
++
+OPA
++
+privacyIDEA
++
+MISP
++
+Wazuh
++
+OpenSearch
++
+Redis
++
+PostgreSQL
++
+WebAuthn / FIDO2
++
+Custom Risk Engine
+```
+
+**This is the closest practical open-source architecture to building a self-hosted alternative to modern commercial Risk-Based Authentication platforms.**
+
